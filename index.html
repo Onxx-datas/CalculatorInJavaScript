@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <title>Kalkulyator</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+
+
+<body>
+
+  <div class="calculator">
+    <h2>Kalkulyator</h2>
+    <input type="text" id="display" readonly>
+
+    <div class="btn-container">
+      <button onclick="appendValue('1')">Bir</button>
+      <button onclick="appendValue('2')">Ikki</button>
+      <button onclick="appendValue('3')">Uch</button>
+      <button class="btn-operator" onclick="appendValue('+')">+</button>
+
+      <button onclick="appendValue('4')">To'rt</button>
+      <button onclick="appendValue('5')">Besh</button>
+      <button onclick="appendValue('6')">Olti</button>
+      <button class="btn-operator" onclick="appendValue('-')">−</button>
+
+      <button onclick="appendValue('7')">Yetti</button>
+      <button onclick="appendValue('8')">Sakkiz</button>
+      <button onclick="appendValue('9')">To'qqiz</button>
+      <button class="btn-operator" onclick="appendValue('*')">×</button>
+
+      <button onclick="appendValue('0')">No'l</button>
+      <button onclick="appendValue('.')">.</button>
+      <button class="btn-equal" onclick="calculate()">=</button>
+      <button class="btn-operator" onclick="appendValue('/')">÷</button>
+
+      <button class="btn-clear" onclick="clearDisplay()">Clear</button>
+      <button class="btn-back" onclick="removeLast()">←</button>
+    </div>
+  </div>
+
+  <script>
+    function appendValue(value) {
+      document.getElementById('display').value += value;
+    }
+
+    function clearDisplay() {
+      document.getElementById('display').value = '';
+    }
+
+    function calculate() {
+      try {
+        document.getElementById('display').value = eval(document.getElementById('display').value);
+      } catch (error) {
+        alert("Nimadur noto'g'ri kiritildi!");
+      }
+    }
+
+    function removeLast() {
+      let display = document.getElementById('display');
+      display.value = display.value.slice(0, -1);
+    }
+  </script>
+
+</body>
+</html>
